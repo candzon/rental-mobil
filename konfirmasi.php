@@ -61,7 +61,7 @@ $isi = $koneksi->query("SELECT * FROM mobil WHERE id_mobil = '$id'")->fetch();
                             <tr>
                                 <td>Nominal </td>
                                 <td> :</td>
-                                <td><input type="text" name="nominal" required class="form-control"></td>
+                                <td><input type="text" name="nominal" required class="form-control" value="<?php echo $hasil['total_harga']; ?>"></td>
                             </tr>
                             <tr>
                                 <td>Tanggal Pembayaran</td>
