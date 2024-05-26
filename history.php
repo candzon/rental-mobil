@@ -46,7 +46,7 @@ $hasil = $koneksi->query("SELECT mobil.merk, booking.* FROM booking JOIN mobil O
                                     <td><?= $isi['merk']; ?></td>
                                     <td><?= $isi['nama']; ?></td>
                                     <td><?= $isi['tanggal']; ?></td>
-                                    <td><?= $isi['lama_sewa']; ?> hari</td>
+                                    <td><?= $isi['lama_sewa']; ?> Jam</td>
                                     <td>Rp. <?= number_format($isi['total_harga']); ?></td>
                                     <td><?= $isi['konfirmasi_pembayaran']; ?></td>
                                     <td>

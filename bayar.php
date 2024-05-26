@@ -95,9 +95,9 @@
                             <td><?php echo $hasil['tanggal'];?></td>
                         </tr>
                         <tr>
-                            <td>Lama Sewa </td>
+                            <td>Lama Sewa (JAM) </td>
                             <td> :</td>
-                            <td><?php echo $hasil['lama_sewa'];?> hari</td>
+                            <td><?php echo $hasil['lama_sewa'];?> Jam</td>
                         </tr>
                         <tr>
                             <td>Metode Pembayaran </td>

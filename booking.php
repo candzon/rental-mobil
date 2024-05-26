@@ -62,8 +62,8 @@
                       <input type="date" name="tanggal" id="" required class="form-control" placeholder="Nama Anda">
                     </div> 
                     <div class="form-group">
-                      <label for="">Lama Sewa</label>
-                      <input type="number" name="lama_sewa" id="" required class="form-control" placeholder="Lama Sewa">
+                      <label for="">Lama Sewa (Jam dan Min/3Jam) </label>
+                      <input type="number" name="lama_sewa" id="" required class="form-control" placeholder="Lama Sewa" min="3" oninput="checkMinValue(this)">
                     </div> 
                     <input type="hidden" value="<?php echo $_SESSION['USER']['id_login'];?>" name="id_login">
                     <input type="hidden" value="<?php echo $isi['id_mobil'];?>" name="id_mobil">

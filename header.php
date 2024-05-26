@@ -108,6 +108,17 @@
             toggleRekeningInput();
         }
     </script>
+
+    <!-- Jika pengguna input kurang dari 3 jam maka akan tampil alert-->
+    <script>
+        function checkMinValue(input) {
+            if (input.value < 3) {
+                alert("Anda hanya bisa memasukkan minimal 3 jam");
+                input.value = 3;
+            }
+        }
+    </script>
+
     <!-- <script>
         function toggleRekeningInput() {
             var metode = document.getElementById('metode').value;

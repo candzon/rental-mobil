@@ -53,9 +53,50 @@ if ($_GET['id'] == 'daftar') {
 }
 
 if ($_GET['id'] == 'booking') {
-    $total = $_POST['total_harga'] * $_POST['lama_sewa'];
-    $unik  = random_int(100, 999);
-    $total_harga = $total + $unik;
+    // Ambil data dari form
+    $id_mobil = $_POST['id_mobil'];
+    $lama_sewa = $_POST['lama_sewa'];
+
+    // Ambil harga mobil dari tabel mobil berdasarkan id_mobil
+    $sql = "SELECT harga FROM mobil WHERE id_mobil = ?";
+    $stmt = $koneksi->prepare($sql);
+    $stmt->execute([$id_mobil]);
+    $mobil = $stmt->fetch();
+
+    // Pastikan harga mobil ditemukan
+    if ($mobil) {
+        $harga_per_hari = $mobil['harga'];
+
+        // Atur harga per 3 jam sebagai 40% dari harga harian
+        $harga_per_3_jam = 0.4 * $harga_per_hari;
+
+        // Tentukan diskon berdasarkan lama sewa
+        // Diskon 10% untuk setiap 3 jam setelah 3 jam pertama
+        $diskon = 0.1;
+
+        // Hitung total harga berdasarkan lama sewa
+        if ($lama_sewa <= 3) {
+            $total = $lama_sewa * ($harga_per_3_jam / 3);
+        } else {
+            $harga_awal = 3 * ($harga_per_3_jam / 3); // Harga 3 jam pertama
+            $harga_diskon = ($lama_sewa - 3) * ($harga_per_3_jam / 3) * (1 - $diskon); // Harga setelah diskon
+            $total = $harga_awal + $harga_diskon;
+        }
+
+        // Pastikan total tidak lebih murah dari harga harian
+        if ($total > $harga_per_hari) {
+            $total = $harga_per_hari;
+        }
+
+        // Tambahkan biaya unik
+        $unik = random_int(100, 999);
+        $total_harga = $total + $unik;
+        
+        // Tampilkan total harga
+        echo "Total Harga: Rp " . number_format($total_harga, 2, ',', '.');
+    } else {
+        echo "Mobil tidak ditemukan.";
+    }
 
     $data[] = time();
     $data[] = $_POST['id_login'];
@@ -121,7 +162,6 @@ if ($_GET['id'] == 'bayar_transfer') {
         echo '<script>alert("Pembayaran Sukses , Silahkan Tunggu Konfirmasi dari Admin");window.location="../history.php";</script>';
     } else {
         // Log error if insertion fails
-        var_dump($row->errorInfo());
         echo '<script>alert("Pembayaran Gagal");history.go(-1);</script>';
     }
 } elseif ($_GET['id'] == 'bayar_cash') {
@@ -130,9 +170,6 @@ if ($_GET['id'] == 'bayar_transfer') {
     $data[] = $_POST['nama'];
     $data[] = $_POST['nominal'];
     $data[] = $_POST['tgl'];
-
-    // Mengecek data apakah sudah lengkap
-    // var_dump($data);
 
     $sql = "INSERT INTO `pembayaran`(`id_booking`, `metode`, `nama_rekening`, `nominal`, `tanggal`) 
     VALUES (?,?,?,?,?)";
@@ -147,7 +184,6 @@ if ($_GET['id'] == 'bayar_transfer') {
         echo '<script>alert("Pembayaran Sukses , Silahkan Tunggu Konfirmasi dari Admin");window.location="../history.php";</script>';
     } else {
         // Jika data gagal diinput
-        var_dump($row->errorInfo());
         echo '<script>alert("Pembayaran Gagal");history.go(-1);</script>';
     }
 } else {
