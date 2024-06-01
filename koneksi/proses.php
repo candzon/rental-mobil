@@ -91,9 +91,6 @@ if ($_GET['id'] == 'booking') {
         // Tambahkan biaya unik
         $unik = random_int(100, 999);
         $total_harga = $total + $unik;
-        
-        // Tampilkan total harga
-        echo "Total Harga: Rp " . number_format($total_harga, 2, ',', '.');
     } else {
         echo "Mobil tidak ditemukan.";
     }
