@@ -116,25 +116,16 @@ $hasil_login = $row->fetch();
         }
     </script>
 
-    <!-- Modal Structure -->
-    <div class="modal fade" id="addSupirModal" tabindex="-1" role="dialog" aria-labelledby="addSupirModalLabel" aria-hidden="true">
-        <div class="modal-dialog" role="document">
-            <form method="post" action="proses.php">
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <h5 class="modal-title" id="addSupirModalLabel">Tambah Supir</h5>
-                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                            <span aria-hidden="true">&times;</span>
-                        </button>
-                    </div>
-                    <div class="modal-body">
-                        <div class="form-group">
-                            <label for="nama">Nama Supir</label>
-                            <input type="text" name="nama" id="nama" class="form-control" required>
-                        </div>
-                        <button type="submit" name="submit" class="btn btn-primary mt-3">Simpan</button>
-                    </div>
-                </div>
-            </form>
-        </div>
-    </div>
+    <script>
+        function confirmAdd() {
+            if (confirm("Apakah Anda yakin ingin menambah supir ini?")) {
+                document.getElementById('addSupirForm').submit();
+            }
+        }
+    </script>
+
+    <script>
+        function confirmSubmission() {
+            return confirm("Apakah data yang anda masukkan sudah benar?");
+        }
+    </script>

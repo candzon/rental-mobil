@@ -94,7 +94,7 @@ $unik  = random_int(100, 999);
                             <td><?php echo $hasil['tanggal']; ?></td>
                         </tr>
                         <tr>
-                            <td>Lama Sewa (JAM) </td>
+                            <td>Lama Sewa</td>
                             <td> :</td>
                             <td>
                                 <!-- Logic untuk memformat lama sewa jam menjadi hari -->
@@ -114,9 +114,23 @@ $unik  = random_int(100, 999);
                             </td>
                         </tr>
                         <tr>
+                            <td>Supir </td>
+                            <td> :</td>
+                            <td>
+                                <?php
+                                if ($hasil['id_supir'] == 0) {
+                                    echo "Tidak Memakai Supir";
+                                } else {
+                                    $id_supir = $hasil['id_supir'];
+                                    $supir = $koneksi->query("SELECT * FROM supir WHERE id_supir = '$id_supir'")->fetch();
+                                    echo $supir['nama'];
+                                }
+                                ?>
+                            </td>
+                        <tr>
                             <td>Metode Pembayaran </td>
                             <td> :</td>
-                            <td><?php echo $metode_pembayaran['metode']; ?></td>
+                            <td><?php echo $metode_pembayaran['metode'] ?? 'null'; ?></td>
                         </tr>
                         <tr>
                             <td>Total Harga </td>

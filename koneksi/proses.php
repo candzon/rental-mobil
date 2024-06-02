@@ -104,6 +104,7 @@ if ($_GET['id'] == 'booking') {
     $data[] = $_POST['no_tlp'];
     $data[] = $_POST['tanggal'];
     $data[] = $_POST['lama_sewa'];
+    $data[] = $_POST['id_supir'];
     $data[] = $total_harga;
     $data[] = "Belum Bayar";
     $data[] = date('Y-m-d');
@@ -115,8 +116,8 @@ if ($_GET['id'] == 'booking') {
     nama, 
     alamat, 
     no_tlp, 
-    tanggal, lama_sewa, total_harga, konfirmasi_pembayaran, tgl_input) 
-        VALUES (?,?,?,?,?,?,?,?,?,?,?,?)";
+    tanggal, lama_sewa, id_supir ,total_harga, konfirmasi_pembayaran, tgl_input) 
+        VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?)";
     $row = $koneksi->prepare($sql);
     $row->execute($data);
 

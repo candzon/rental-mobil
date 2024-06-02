@@ -175,7 +175,15 @@ $isi = $koneksi->query("SELECT * FROM mobil WHERE id_mobil = '$id'")->fetch();
                             <tr>
                                 <td>Lama Sewa </td>
                                 <td> :</td>
-                                <td><?php echo $hasil['lama_sewa']; ?> hari</td>
+                                <?php
+                                $waktu_sewa = $hasil['lama_sewa'];
+                                if ($waktu_sewa >= 24) {
+                                    $lama_sewa = floor($waktu_sewa / 24) . " Hari";
+                                } else {
+                                    $lama_sewa = $waktu_sewa . " Jam";
+                                }
+                                ?>
+                                <td><?= $lama_sewa; ?></td>
                             </tr>
                             <tr>
                                 <td>Total Harga </td>

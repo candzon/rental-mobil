@@ -18,11 +18,9 @@ if (empty($_SESSION['USER'])) {
                         Supir
                     </h5>
                 </div>
-                <!-- <div class="col text-right">
-                    <button type="button" class="btn btn-success" data-toggle="modal" data-target="#addSupirModal">
-                        Tambah Supir
-                    </button>
-                </div> -->
+                <div class="col text-right">
+                    <a class="btn btn-success" href="tambah.php" role="button">Tambah</a>
+                </div>
             </div>
         </div>
         <div class="card-body">
@@ -32,6 +30,7 @@ if (empty($_SESSION['USER'])) {
                         <tr>
                             <th>No</th>
                             <th>Nama Supir</th>
+                            <th>No HP</th>
                             <th>Aksi</th>
                         </tr>
                     </thead>
@@ -47,6 +46,7 @@ if (empty($_SESSION['USER'])) {
                             <tr>
                                 <td><?= $no; ?></td>
                                 <td><?= $r->nama; ?></td>
+                                <td><?= $r->no_hp; ?></td>
                                 <td>
                                     <a href="javascript:void(0);" onclick="confirmDelete('<?= $url; ?>admin/supir/proses.php?id=<?= $r->id_supir; ?>')" class="btn btn-danger btn-sm">Delete Supir</a>
                                 </td>
@@ -59,5 +59,7 @@ if (empty($_SESSION['USER'])) {
         </div>
     </div>
 </div>
-<?php include '../footer.php'; ?>
 
+
+
+<?php include '../footer.php'; ?>
