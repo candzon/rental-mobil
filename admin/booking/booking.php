@@ -67,9 +67,9 @@ $hasil = $koneksi->query($sql)->fetchAll();
                                     } else {
                                         $id_supir = $isi['id_supir'];
                                         $supir = $koneksi->query("SELECT * FROM supir WHERE id_supir = '$id_supir'")->fetch();
-                                        echo $supir['nama'];
+                                        echo $supir['nama'] . " (" . $supir['no_hp'] . ")";
                                     }
-                                ?>
+                                    ?>
                                 <td>Rp. <?= number_format($isi['total_harga']); ?></td>
                                 <td><?= $isi['konfirmasi_pembayaran']; ?></td>
                                 <td>

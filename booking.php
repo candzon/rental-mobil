@@ -77,6 +77,21 @@ $isi = $koneksi->query("SELECT * FROM mobil WHERE id_mobil = '$id'")->fetch();
 
             </div>
             <div class="form-group">
+              <label for="">Kota tujuan</label>
+              <select name="id_kota" id="" class="form-control">
+                <option value="0">Pilih Kota</option>
+                <?php
+                $sql = "SELECT * FROM tb_kota";
+                $row = $koneksi->prepare($sql);
+                $row->execute();
+                $hasil = $row->fetchAll(PDO::FETCH_OBJ);
+                foreach ($hasil as $r) {
+                ?>
+                  <option value="<?php echo $r->id_kota; ?>"><?php echo $r->nama; ?></option>
+                <?php } ?>
+              </select>
+            </div>
+            <div class="form-group">
               <label for="">Lama Sewa (Jam dan Min/3Jam) </label>
               <input type="number" name="lama_sewa" id="" required class="form-control" placeholder="Lama Sewa" min="3" oninput="checkMinValue(this)">
             </div>

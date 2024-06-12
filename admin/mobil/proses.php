@@ -21,10 +21,10 @@ if ($_GET['aksi'] == 'tambah') {
         'image/jpg'   => 'jpeg',
         'image/webp'  => 'webp'
     ];
-    if(!in_array($filetype, array_keys($allowedTypes))) {
+    if (!in_array($filetype, array_keys($allowedTypes))) {
         echo '<script>alert("You can only upload JPG, PNG and GIF file");window.location="tambah.php"</script>';
         exit();
-    }else if ($_FILES['gambar']["error"] > 0) {
+    } else if ($_FILES['gambar']["error"] > 0) {
         echo '<script>alert("Error file");history.go(-1)</script>';
         exit();
     } elseif (!in_array($_FILES['gambar']["type"], $allowedImageType)) {
@@ -46,9 +46,10 @@ if ($_GET['aksi'] == 'tambah') {
             $data[] = $_POST['deskripsi'];
             $data[] = $_POST['status'];
             $data[] = $newfilename;
+            $data[] = $_POST['tipe'];
 
-            $sql = "INSERT INTO `mobil`(`no_plat`, `merk`, `harga`, `deskripsi`, `status`, `gambar`) 
-                VALUES (?,?,?,?,?,?)";
+            $sql = "INSERT INTO `mobil`(`no_plat`, `merk`, `harga`, `deskripsi`, `status`, `gambar`, `tipe`) 
+                VALUES (?,?,?,?,?,?,?)";
             $row = $koneksi->prepare($sql);
             $row->execute($data);
             echo '<script>alert("sukses");window.location="mobil.php"</script>';
@@ -81,10 +82,10 @@ if ($_GET['aksi'] == 'edit') {
         'image/jpg'   => 'jpeg',
         'image/webp'  => 'webp'
     ];
-    if(!in_array($filetype, array_keys($allowedTypes))) {
+    if (!in_array($filetype, array_keys($allowedTypes))) {
         echo '<script>alert("You can only upload JPG, PNG and GIF file");window.location="tambah.php"</script>';
         exit();
-    }else if ($_FILES['gambar']["size"] > 0) {
+    } else if ($_FILES['gambar']["size"] > 0) {
         if ($_FILES['gambar']["error"] > 0) {
             echo '<script>alert("Error file");history.go(-1)</script>';
             exit();
@@ -101,8 +102,8 @@ if ($_GET['aksi'] == 'edit') {
             $newfilename = round(microtime(true)) . '.' . end($temp);
             $target_path = $dir . basename($newfilename);
             if (move_uploaded_file($tmp_name, $target_path)) {
-                if (file_exists('../../assets/image/'.$gambar)) {
-                    unlink('../../assets/image/'.$gambar);
+                if (file_exists('../../assets/image/' . $gambar)) {
+                    unlink('../../assets/image/' . $gambar);
                 }
                 $data[] = $newfilename;
             } else {
@@ -127,7 +128,7 @@ if (!empty($_GET['aksi'] == 'hapus')) {
     $id = $_GET['id'];
     $gambar = $_GET['gambar'];
 
-    unlink('../../assets/image/'.$gambar);
+    unlink('../../assets/image/' . $gambar);
 
     $sql = "DELETE FROM mobil WHERE id_mobil = ?";
     $row = $koneksi->prepare($sql);

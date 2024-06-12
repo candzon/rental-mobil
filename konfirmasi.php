@@ -66,8 +66,18 @@ $isi = $koneksi->query("SELECT * FROM mobil WHERE id_mobil = '$id'")->fetch();
                             <tr>
                                 <td>Tanggal Pembayaran</td>
                                 <td> :</td>
-                                <td><input type="datetime-local" name="tgl" required class="form-control"></td>
+                                <td><input type="datetime-local" name="tanggal" required class="form-control"></td>
                             </tr>
+                            <!-- <tr>
+                                <td>Diantarkan</td>
+                                <td> :</td>
+                                <td>
+                                    <select name="diantarkan" id="" class="form-control">
+                                        <option value="" disabled selected>Pilih Opsi</option>
+                                        <option value="Ya">Ya</option>
+                                        <option value="Tidak">Tidak</option>
+                                    </select>
+                            </tr> -->
                             <tr>
                                 <td>Total yg Harus di Bayar </td>
                                 <td> :</td>

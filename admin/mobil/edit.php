@@ -50,6 +50,11 @@
                                 <input type="text" class="form-control col-sm-9"  value="<?= $hasil['harga'];?>" name="harga" placeholder="Isi Harga">
                             </div>
 
+                            <div class="form-group row">
+                                <label class="col-sm-3">Tipe</label>
+                                <input type="text" class="form-control col-sm-9"  value="<?= $hasil['tipe'];?>" name="tipe" placeholder="Isi Tipe">
+                            </div>
+
                         </div>
 
                         <div class="col-sm-6">
@@ -70,7 +75,7 @@
 
                             <div class="form-group row">
                                 <label class="col-sm-3">Gambar</label>
-                                <input type="file" accept="image/*" class="form-control col-sm-9" name="gambar" placeholder="Isi Gambar">
+                                <input type="file" accept="image/*" class="form-control col-sm-9" name="gambar" placeholder="Isi Gambar" value="<?= $hasil['gambar']; ?>">
                                
                             </div>
                             <div class="form-group row">

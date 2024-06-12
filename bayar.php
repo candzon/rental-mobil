@@ -127,6 +127,18 @@ $unik  = random_int(100, 999);
                                 }
                                 ?>
                             </td>
+                        </tr>
+                        <tr>
+                            <td>Kota Tujuan </td>
+                            <td> :</td>
+                            <td>
+                                <?php
+                                $id_kota = $hasil['id_kota'];
+                                $kota = $koneksi->query("SELECT * FROM tb_kota WHERE id_kota = '$id_kota'")->fetch();
+                                echo $kota['nama'];
+                                ?>
+                            </td>
+                        </tr>
                         <tr>
                             <td>Metode Pembayaran </td>
                             <td> :</td>
