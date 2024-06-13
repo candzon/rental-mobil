@@ -216,7 +216,7 @@ $isi = $koneksi->query("SELECT * FROM mobil WHERE id_mobil = '$id'")->fetch();
                             </tr>
                         </table>
                         <input type="hidden" name="id_booking" value="<?php echo $hasil['id_booking']; ?>">
-                        <?php if ($hasil['konfirmasi_pembayaran'] == 'Sedang di proses') { ?>
+                        <?php if ($hasil['konfirmasi_pembayaran'] == 'Pembayaran di terima') { ?>
                             <a class="btn btn-primary" href="print.php?id=<?= $hasil['kode_booking']; ?>" role="button">Cetak Kwitansi</a>
                         <?php } ?>
                         <button type="submit" class="btn btn-primary float-right">

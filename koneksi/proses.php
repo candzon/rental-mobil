@@ -96,16 +96,14 @@ if ($_GET['id'] == 'booking') {
 
         // Tambahkan harga tambahan jika id_kota bukan 1 (Keluar kota)
         if ($id_kota != 1) {
+            $unik = random_int(100, 999);
             $total_biaya_sewa *= 1.2; // Tambahan 20% jika bukan di kota dengan id 1
-        }
-
-        // Tambahkan biaya unik
-        $unik = random_int(100, 999);
-
-        if ($lama_sewa == 24) {
-            $total_harga = $harga_per_hari + $unik;
-        } else {
             $total_harga = $total_biaya_sewa + $unik;
+            var_dump($total_harga);die;
+        }else{
+            $unik = random_int(100, 999);
+            $total_harga = $harga_per_hari + $unik;
+            var_dump($total_harga);die;
         }
     }
 
