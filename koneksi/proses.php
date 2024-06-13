@@ -99,11 +99,9 @@ if ($_GET['id'] == 'booking') {
             $unik = random_int(100, 999);
             $total_biaya_sewa *= 1.2; // Tambahan 20% jika bukan di kota dengan id 1
             $total_harga = $total_biaya_sewa + $unik;
-            var_dump($total_harga);die;
         }else{
             $unik = random_int(100, 999);
             $total_harga = $harga_per_hari + $unik;
-            var_dump($total_harga);die;
         }
     }
 
