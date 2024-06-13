@@ -96,9 +96,15 @@ $isi = $koneksi->query("SELECT * FROM mobil WHERE id_mobil = '$id'")->fetch();
                                     <td><?= $hsl['tanggal']; ?></td>
                                 </tr>
                             </table>
+                            <?php if($hasil['konfirmasi_pembayaran'] == 'Pembayaran di terima') :?>
                             <div class="alert alert-success" role="alert">
                                 Sudah dibayar
                             </div>
+                            <?php else :?>
+                            <div class="alert alert-danger" role="alert">
+                                Belum dibayar
+                            </div>
+                            <?php endif;?>
                         <?php } else { ?>
                             <div class="alert alert-danger" role="alert">
                                 Belum dibayar

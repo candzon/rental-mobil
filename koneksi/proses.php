@@ -200,7 +200,7 @@ if ($id == 'bayar_transfer') {
             $sql2 = "UPDATE `booking` SET `konfirmasi_pembayaran`=? WHERE `id_booking`=?";
             $row2 = $koneksi->prepare($sql2);
             $row2->execute($data2);
-            var_dump($data2);die;
+            // var_dump($data2);die;
 
             echo '<script>alert("Pembayaran Sukses, Silahkan Tunggu Konfirmasi dari Admin");window.location="../history.php";</script>';
         } else {

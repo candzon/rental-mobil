@@ -88,15 +88,18 @@
             var metode = document.getElementById('metode').value;
             var rekeningRow = document.getElementById('rekeningRow');
             var form = document.getElementById('paymentForm');
+            var tanggalLabel = document.getElementById('tanggalLabel');
 
             if (metode === 'Bank Transfer') {
                 rekeningRow.classList.remove('hidden');
                 document.getElementById('no_rekening').setAttribute('required', 'required');
                 form.action = "koneksi/proses.php?id=bayar_transfer";
+                tanggalLabel.innerText = "Tanggal Pembayaran";
             } else if (metode === 'Cash') {
                 rekeningRow.classList.add('hidden');
                 document.getElementById('no_rekening').removeAttribute('required');
                 form.action = "koneksi/proses.php?id=bayar_cash";
+                tanggalLabel.innerText = "Dibayarkan tanggal";
             } else {
                 rekeningRow.classList.add('hidden');
                 form.action = "";
@@ -108,6 +111,7 @@
             toggleRekeningInput();
         }
     </script>
+
 
     <!-- Jika pengguna input kurang dari 3 jam maka akan tampil alert-->
     <!-- <script>

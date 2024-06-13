@@ -64,7 +64,7 @@ $isi = $koneksi->query("SELECT * FROM mobil WHERE id_mobil = '$id'")->fetch();
                                 <td><input type="text" name="nominal" required class="form-control" value="<?php echo $hasil['total_harga']; ?>"></td>
                             </tr>
                             <tr>
-                                <td>Tanggal Pembayaran</td>
+                                <td id="tanggalLabel">Tanggal Pembayaran</td>
                                 <td> :</td>
                                 <td><input type="datetime-local" name="tanggal" required class="form-control"></td>
                             </tr>
