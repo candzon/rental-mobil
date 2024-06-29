@@ -28,6 +28,7 @@
                             <th>No.</th>
                             <th>Gambar</th>
                             <th>Merk Mobil</th>
+                            <th>Tipe</th>
                             <th>No Plat</th>
                             <th>Harga</th>
                             <th>Status</th>
@@ -50,6 +51,7 @@
                             <td><?php echo $no;?></td>
                             <td><img src="../../assets/image/<?php echo $isi['gambar'];?>" class="img-fluid" style="width:200px;"></td>
                             <td><?php echo $isi['merk'];?></td>
+                            <td><?php echo $isi['tipe'];?></td>
                             <td><?php echo $isi['no_plat'];?></td>
                             <td><?php echo $isi['harga'];?></td>
                             <td><?php echo $isi['status'];?></td>

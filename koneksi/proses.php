@@ -101,7 +101,7 @@ if ($_GET['id'] == 'booking') {
             $total_harga = $total_biaya_sewa + $unik;
         }else{
             $unik = random_int(100, 999);
-            $total_harga = $harga_per_hari + $unik;
+            $total_harga = $total_biaya_sewa + $unik;
         }
     }
 

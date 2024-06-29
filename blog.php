@@ -34,6 +34,7 @@
                 <img src="assets/image/<?php echo $isi['gambar'];?>" class="card-img-top" style="height:200px;object-fit:cover;">
                     <div class="card-body" style="background:#ddd">
                         <h5 class="card-title"><?php echo $isi['merk'];?></h5>
+                        <h6 class="card-title"><?php echo $isi['tipe'];?></h6>
                     </div>
                     <ul class="list-group list-group-flush">
                         <?php if($isi['status'] == 'Tersedia'){?>
